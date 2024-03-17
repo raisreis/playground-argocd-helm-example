@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: xbox-app
+  namespace: argocd
+spec:
+  destination:
+    namespace: xbox
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: k8s/argocd-helm
+    repoURL: https://github.com/raisreis/playground-argocd-helm-example.git
+    targetRevision: main
+  syncPolicy:
+    automated: {}
